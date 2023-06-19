@@ -1,0 +1,12 @@
+### Get Items
+GET http://localhost:3000/api/items HTTP/1.1
+
+### Get Single Item
+GET http://localhost:3000/api/items/1 HTTP/1.1
+
+### Get Books
+GET http://localhost:3000/api/books HTTP/1.1
+
+### Get Single Book
+GET http://localhost:3000/api/books/1 HTTP/1.1
+

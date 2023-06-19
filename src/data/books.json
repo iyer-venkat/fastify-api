@@ -1,0 +1,34 @@
+[
+  {
+    "bookId": 1,
+    "bookName": "Harry Potter & the Sorcerer's Stone"
+  },
+  {
+    "bookId": 2,
+    "bookName": "Harry Potter & the Chamber of Secrets"
+  },
+  {
+    "bookId": 3,
+    "bookName": "Harry Potter & the Prisoner of Azkaban"
+  },
+  {
+    "bookId": 4,
+    "bookName": "The Fellowship of the Ring"
+  },
+  {
+    "bookId": 5,
+    "bookName": "The Two Towers"
+  },
+  {
+    "bookId": 6,
+    "bookName": "The Return of the King"
+  },
+  {
+    "bookId": 7,
+    "bookName": "The Way of the Shadows"
+  },
+  {
+    "bookId": 8,
+    "bookName": "Beyond the Shadows"
+  }
+]

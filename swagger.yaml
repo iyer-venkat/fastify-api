@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: My example
+  version: 0.1.0
+components:
+  schemas:
+    Schema:
+      type: object
+      properties:
+        ItemBody:
+          type: object
+          properties:
+            label:
+              type: string
+            dueDate:
+              type: string
+              format: date-time
+            state:
+              type: string
+              enum:
+                - todo
+                - in progress
+                - done
+          required:
+            - label
+            - state
+          additionalProperties: false
+        ItemQuery:
+          type: object
+          properties:
+            itemId:
+              type: string
+          required:
+            - itemId
+          additionalProperties: false
+        ItemParam:
+          type: object
+          properties:
+            id:
+              type: string
+          required:
+            - id
+          additionalProperties: false
+      required:
+        - ItemBody
+        - ItemQuery
+        - ItemParam
+      additionalProperties: false
+paths:
+  "/hello/{id}":
+    post:
+      operationId: postTodoItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Schema/properties/ItemBody"
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: itemId
+          required: true
+        - schema:
+            type: string
+          in: path
+          name: id
+          required: true
+      responses:
+        "200":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Schema/properties/ItemBody"
+servers:
+  - url: http://localhost:3000
+    description: local env
+tags:
+  - name: hello
+    description: routes used by different FEs
