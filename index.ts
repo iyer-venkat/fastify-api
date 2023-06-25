@@ -4,17 +4,17 @@ import Fastify from "fastify";
 import fs from "fs";
 
 const ItemParam = z.object({
-  id: z.string()
+  id: z.string(),
 });
 
 const ItemQuery = z.object({
-  itemId: z.string()
+  itemId: z.string(),
 });
 
 enum TodoStateEnum {
   Todo = `todo`,
   InProgress = `in progress`,
-  Done = `done`
+  Done = `done`,
 }
 
 const TodoState = z.nativeEnum(TodoStateEnum);
@@ -22,13 +22,13 @@ const TodoState = z.nativeEnum(TodoStateEnum);
 const ItemBody = z.object({
   label: z.string(),
   dueDate: z.date().optional(),
-  state: TodoState
+  state: TodoState,
 });
 
 const models = {
   ItemBody,
   ItemQuery,
-  ItemParam
+  ItemParam,
 };
 
 declare module "fastify" {
@@ -36,7 +36,7 @@ declare module "fastify" {
     readonly zod: FastifyZod<typeof models>;
   }
 }
-const server = Fastify({logger:true});
+const server = Fastify({ logger: true });
 
 const start = async () => {
   await register(server, {
@@ -45,17 +45,17 @@ const start = async () => {
       openapi: {
         info: {
           title: "My example",
-          version: "0.1.0"
+          version: "0.1.0",
         },
         servers: [
           {
             url: "http://localhost:3000",
-            description: "local env"
-          }
+            description: "local env",
+          },
         ],
-        tags: [{ name: "hello", description: "routes used by different FEs" }]
-      }
-    }
+        tags: [{ name: "hello", description: "routes used by different FEs" }],
+      },
+    },
   });
 
   await server.register(async (app, routerOptions, done) => {
@@ -66,7 +66,7 @@ const start = async () => {
         querystring: `ItemQuery`,
         params: `ItemParam`,
         body: `ItemBody`,
-        reply: `ItemBody`
+        reply: `ItemBody`,
       },
       async ({ query, params, body }) => {
         console.log("param", params.id);
