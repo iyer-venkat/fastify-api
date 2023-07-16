@@ -4,7 +4,7 @@ An attempt at writing Node APIs with Fastify
 
 ### Running the application
 
-use `yarn install` or `npm i` to install all dependencies
+use `yarn install` or `npm i` to install all dependencies \
 use `yarn dev` or `npm run dev` to run the project
 
 ### Swagger
