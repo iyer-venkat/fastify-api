@@ -7,7 +7,9 @@ export const itemRoutes = (
   options: any,
   done: any
 ) => {
-  server.get("/", getAllItems);
+  const { tags } = options;
+
+  server.get("/", { schema: { tags } }, getAllItems);
 
   server.get(
     "/:id",
@@ -23,20 +25,9 @@ export const itemRoutes = (
           },
         },
         response: {
-          200: $ref("itemSchemaReply") /*{
-            type: "object",
-            properties: {
-              itemId: {
-                type: "string",
-                description: "the item identifier, as itemId",
-              },
-              itemName: {
-                type: "string",
-                description: "the item name",
-              },
-            },
-          }*/,
+          200: $ref("itemSchemaReply"),
         },
+        tags,
       },
     },
     getItemById

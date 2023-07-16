@@ -7,7 +7,10 @@ export const bookRoutes = (
   options: any,
   done: any
 ) => {
-  server.get("/", getAllBooks);
+  const { preHandler, tags } = options;
+  server.addHook("preHandler", preHandler);
+
+  server.get("/", { schema: { tags } }, getAllBooks);
 
   server.get(
     "/:id",
@@ -37,6 +40,7 @@ export const bookRoutes = (
             },
           }*/,
         },
+        tags,
       },
     },
     getBookById

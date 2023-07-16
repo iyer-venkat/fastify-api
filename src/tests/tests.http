@@ -6,7 +6,21 @@ GET http://localhost:3000/api/items/1 HTTP/1.1
 
 ### Get Books
 GET http://localhost:3000/api/books HTTP/1.1
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGFycnkiLCJpYXQiOjE2ODk0ODQ0MzV9.6BN0Fa1l2BB8REywUqVLiBm7rUrz9yshqAOMxUKPp04
 
 ### Get Single Book
 GET http://localhost:3000/api/books/1 HTTP/1.1
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSGFycnkiLCJpYXQiOjE2ODk0ODQ0MzV9.6BN0Fa1l2BB8REywUqVLiBm7rUrz9yshqAOMxUKPp04
 
+
+### Invalid Login
+POST http://localhost:3000/api/login HTTP/1.1
+Content-Type: application/json
+
+{"username": "Voldemort", "password": "killP0tt3r"}
+
+### Valid Login
+POST http://localhost:3000/api/login HTTP/1.1
+Content-Type: application/json
+
+{"username": "Harry", "password": "P0tt3r"}
