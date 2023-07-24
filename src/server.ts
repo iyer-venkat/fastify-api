@@ -1,15 +1,13 @@
 import dotenv from "dotenv";
-import Fastify, { FastifyRequest, FastifyReply } from "fastify";
+import Fastify from "fastify";
+import cookie, { FastifyCookieOptions } from "@fastify/cookie";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+
 import { swaggerOptions, swaggerUiOptions } from "./swaggerOptions";
-import { bookRoutes } from "./books/book.routes";
-import { bookSchemas } from "./books/book.schemas";
-import { itemRoutes } from "./items/item.routes";
-import { itemSchemas } from "./items/item.schemas";
-import { loginRoutes } from "./login/login.routes";
-import { loginSchemas } from "./login/login.schemas";
 import { authenticateUser } from "../middleware/auth";
+import { bookSchemas, itemSchemas, loginSchemas } from "./allSchemas";
+import { bookRoutes, itemRoutes, loginRoutes } from "./allRoutes";
 
 dotenv.config();
 const server = Fastify({ logger: true });
@@ -22,6 +20,11 @@ const main = async () => {
     //Register swagger Route
     server.register(fastifySwagger, swaggerOptions);
     server.register(fastifySwaggerUi, swaggerUiOptions);
+
+    server.register(cookie, {
+      secret: "my-secret", // for cookies signature
+      parseOptions: {}, // options for parsing cookies
+    } as FastifyCookieOptions);
 
     // server.addHook("preHandler", authenticateUser);
 

@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import jsonwebtoken, { Secret } from "jsonwebtoken";
+import jsonwebtoken, { Secret, VerifyOptions } from "jsonwebtoken";
 
 export const authenticateUser = (
   request: FastifyRequest,
